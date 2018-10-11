@@ -1,0 +1,7 @@
+<h1>Current Auctions:</h1>
+
+<% @items.each do |k| %>
+	<% if (k.auction_start < Time.now) && (k.auction_end > Time.now) %>
+		<h3>* <a href="/item/details/<%=k.id%>"><%=k.name%></a></h3>
+	<% end %>
+<% end %>

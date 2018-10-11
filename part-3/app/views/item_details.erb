@@ -1,0 +1,37 @@
+<div class="item-details">
+	<h1><%= @item.name %></h1>
+	Condition:<br>
+	<h2><%= @item.condition %></h2>
+	Description:<br>
+	<h3><%= @item.description %></h3>
+
+	<p>Auction ends: <%= @item.auction_end %></p>
+	<br>
+</div>
+<div class="item-bidding">
+	<h1>Bidding</h1>
+	<div class="error">
+		<% if @error %>
+		<%= @error %>
+		<% end %>
+	</div>
+	<br>
+	<p>Number of bidders: <%=@bid_count%></p>
+	<br>
+	<% if @duplicate_bid %>
+		<p>You have already bid on this item</p>
+		<p>You bid $<%= @bid_validation.amount %> on <%= @bid_validation.created_at %></p>
+		<br>
+		<p>Thank you for your bid</p>
+	<% elsif @successful_bid %>
+		<p>You bid $<%= @successful_bid.amount %></p>
+		<br><p>Thank you for your bid.</p>
+	<% else %>
+		Place a bid for this item:<br>
+
+		<form action="/item/bid/<%=@item.id%>" method="post">
+			$ <input type="text" name="amount">
+			<input type="submit" value="Place Bid">
+		</form>
+	<% end %>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- 
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <div class="header">
+    <h1>DBC Auction!</h1>
+  </div>
+  <div class="header_links">
+    <h2>
+    <% @user = User.find_by(id: session[:user_id]) %>
+    <% if session[:user_id] %>
+      <a href="/user/profile/<%=@user.id%>"><%= @user.username %> | </a>
+      <a href="/user/logout">Logout | </a>
+    <% else %>
+      <a href="/user/register">Register | </a>
+      <a href="/user/login">Login | </a>
+    <% end %>
+    <a href="/">Home</a>
+    </h2>
+  </div>
+
+<div class="body-container">
+
+    <%= yield %>
+
+</div>
+</body>
+</html>

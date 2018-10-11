@@ -1,0 +1,21 @@
+<div class="error">
+	<% if @error %>
+	<%= @error %>
+	<% end %>
+</div>
+<br>
+<h1>Create an item</h1>
+<br>
+<form action="/item/create" method="post">
+	Name:
+	<input type="text" name="name">
+	Condition:
+	<input type="text" name="condition"><br>
+	Description:
+	<input type="text" name="description"><br>
+	Auction start:
+	<input type="datetime-local" name="auction_start">
+	Auction end:
+	<input type="datetime-local" name="auction_end"><br>
+	<input type="submit" value="List Item for Auction">
+</form>
